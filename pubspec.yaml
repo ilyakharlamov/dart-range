@@ -5,5 +5,5 @@ authors:
 - Olov Lassus <olov.lassus@gmail.com>
 description: Python-like range iterator
 homepage: https://github.com/ilyakharlamov/dart-range
-dependencies:
-  unittest: '>=0.6.14+2 <0.6.15'
+dev_dependencies:
+  unittest: any
