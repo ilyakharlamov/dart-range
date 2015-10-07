@@ -1,8 +1,11 @@
 library range;
+
 import "dart:collection";
+
 class Range extends Object with IterableMixin<int> {
   factory Range(int start, [int stop, int step = 1]) {
-    if (stop == null ) { // reverse stop and start making start 0
+    if (stop == null) {
+      // reverse stop and start making start 0
       stop = start;
       start = 0;
     }
@@ -15,9 +18,7 @@ class Range extends Object with IterableMixin<int> {
 
   Range._(this.start, this.stop, this.step);
 
-  Iterator<int> get iterator {
-      return new RangeIterator(start, stop, step);
-  }
+  Iterator<int> get iterator => new RangeIterator(start, stop, step);
 
   int get length {
     if ((step > 0 && start > stop) || (step < 0 && start < stop)) {
@@ -36,10 +37,8 @@ class Range extends Object with IterableMixin<int> {
     return result;
   }
 
-  String toString() {
-    return step == 1 ?
-      "Range($start, $stop)" : "Range($start, $stop, $step)";
-  }
+  String toString() =>
+      step == 1 ? "Range($start, $stop)" : "Range($start, $stop, $step)";
 
   bool every(bool f(int e)) {
     for (int e in this) {
@@ -76,8 +75,10 @@ class Range extends Object with IterableMixin<int> {
   }
 
   bool operator ==(Range other) {
-    return (other != null && start == other.start && stop == other.stop &&
-            step == other.step);
+    return (other != null &&
+        start == other.start &&
+        stop == other.stop &&
+        step == other.step);
   }
 
   final int start;
@@ -86,25 +87,27 @@ class Range extends Object with IterableMixin<int> {
 }
 
 class RangeIterator implements Iterator<int> {
-
   int _pos;
   final int _stop;
   final int _step;
-  RangeIterator(int pos, int stop, int step)
-    : _stop = stop,
-      _pos = pos-step,
-      _step = step;
 
-  int get current {
-    return _pos;
-  }
+  RangeIterator(int pos, int stop, int step)
+      : _stop = stop,
+        _pos = pos - step,
+        _step = step;
+
+  int get current => _pos;
+
   bool moveNext() {
-    if (_step > 0  ? _pos +_step> _stop-1 : _pos+_step < _stop+1) {
+    if (_step > 0 ? _pos + _step > _stop - 1 : _pos + _step < _stop + 1) {
       return false;
     }
     _pos += _step;
     return true;
   }
 }
-Range range(int start_inclusive, [int stop_exclusive, int step = 1]) => new Range(start_inclusive, stop_exclusive, step);
+
+Range range(int start_inclusive, [int stop_exclusive, int step = 1]) =>
+    new Range(start_inclusive, stop_exclusive, step);
+
 Range indices(lengthable) => new Range(0, lengthable.length);
