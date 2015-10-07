@@ -7,7 +7,7 @@ main() {
     for (int v in range(0, 10)) {
       sum += v;
     }
-    expect(sum, 0+1+2+3+4+5+6+7+8+9);
+    expect(sum, 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9);
   });
 
   test("indices", () {
@@ -26,14 +26,14 @@ main() {
       while (it.moveNext()) {
         sum += it.current;
       }
-      expect(sum, 0+1+2+3+4+5+6+7+8+9);
+      expect(sum, 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9);
     }
   });
 
   test("forEach", () {
     int sum = 0;
     range(0, 10).forEach((e) => sum += e);
-    expect(sum, 0+1+2+3+4+5+6+7+8+9);
+    expect(sum, 0 + 1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9);
   });
 
   test("some", () {
@@ -61,7 +61,7 @@ main() {
     expect(list.length, 5);
     int sum = 0;
     list.forEach((e) => sum += e);
-    expect(sum, 0+1+2+3+4);
+    expect(sum, 0 + 1 + 2 + 3 + 4);
   });
 
   test("toString", () {
@@ -146,12 +146,12 @@ main() {
   });
 
   test("operator ==", () {
-    expect(range(1, 2, 3)==range(1, 2, 3), true);
-    expect(range(1, 2, 3)==range(1, 0, 3), false);
-    expect(range(1, 2, 3)==range(0, 2, 3), false);
-    expect(range(1, 2, 3)==range(1, 2), false);
-    expect(range(1, 1)==range(2, 2), false);
-    expect(range(1, 2, 3)==null, false);
+    expect(range(1, 2, 3) == range(1, 2, 3), true);
+    expect(range(1, 2, 3) == range(1, 0, 3), false);
+    expect(range(1, 2, 3) == range(0, 2, 3), false);
+    expect(range(1, 2, 3) == range(1, 2), false);
+    expect(range(1, 1) == range(2, 2), false);
+    expect(range(1, 2, 3) == null, false);
   });
 
   test("iterator next exception", () {
@@ -160,19 +160,19 @@ main() {
     it.moveNext();
     expect(it.moveNext(), false);
   });
-  
+
   test("step 0 exception", () {
     var isExceptionThrown = false;
     try {
       range(1, 2, 0);
     } catch (e) {
-      isExceptionThrown=true;
+      isExceptionThrown = true;
       expect(e, isArgumentError);
     }
     expect(isExceptionThrown, true);
   });
   test("single value", () {
-    expect(range(5)==range(0,5), true);
+    expect(range(5) == range(0, 5), true);
   });
   test("from documentation", () {
     Expect_iterableEquals([0, 1, 2], range(3));
@@ -180,8 +180,6 @@ main() {
     Expect_iterableEquals([0, 2, 4, 6], range(0, 8, 2));
     Expect_iterableEquals([0, 3, 6, 9], range(0, 10, 3));
   });
-  
-
 
   print("all tests passed");
 
@@ -224,13 +222,13 @@ void Expect_iterableEquals(Iterable expected, Iterable actual) {
     var actualElement = iterActual.current;
     if (expectedElement != actualElement) {
       throw new TestFailure('Expect_iterableEquals(at index $i, ' +
-                                'expected: <$expectedElement>, actual: <$actualElement>) fails');
+          'expected: <$expectedElement>, actual: <$actualElement>) fails');
     }
     ++i;
   }
   if (iterExpected.moveNext() != iterActual.moveNext()) {
     throw new TestFailure('Expect_iterableEquals(moveNext, ' +
-                              'expected: <${iterExpected.current}>, ' +
-                              'actual: <${iterActual.current}>) fails');
+        'expected: <${iterExpected.current}>, ' +
+        'actual: <${iterActual.current}>) fails');
   }
 }
