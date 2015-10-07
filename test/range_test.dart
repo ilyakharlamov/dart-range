@@ -1,5 +1,5 @@
 import '../lib/range.dart';
-import 'package:unittest/unittest.dart';
+import 'package:test/test.dart';
 
 main() {
   test("for-in iterator", () {
@@ -212,11 +212,6 @@ bench(String name, fn) {
   fn();
   var dt = new DateTime.now().millisecondsSinceEpoch - t0;
   print("$name took $dt ms");
-}
-
-test(String name, fn) {
-  print("executing $name test");
-  fn();
 }
 
 void Expect_iterableEquals(Iterable expected, Iterable actual) {
