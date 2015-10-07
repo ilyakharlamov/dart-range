@@ -1,7 +1,7 @@
 library range;
 import "dart:collection";
 class Range extends Object with IterableMixin<int> {
-  Range(int this.start, [int this.stop, int this.step = 1]) {
+  factory Range(int start, [int stop, int step = 1]) {
     if (stop == null ) { // reverse stop and start making start 0
       stop = start;
       start = 0;
@@ -9,7 +9,11 @@ class Range extends Object with IterableMixin<int> {
     if (step == 0) {
       throw new ArgumentError("step must not be 0");
     }
+
+    return new Range._(start, stop, step);
   }
+
+  Range._(this.start, this.stop, this.step);
 
   Iterator<int> get iterator {
       return new RangeIterator(start, stop, step);
@@ -76,8 +80,8 @@ class Range extends Object with IterableMixin<int> {
             step == other.step);
   }
 
-  int start;
-  int stop;
+  final int start;
+  final int stop;
   final int step;
 }
 
