@@ -6,4 +6,4 @@ authors:
 description: Python-like range iterator
 homepage: https://github.com/ilyakharlamov/dart-range
 dev_dependencies:
-  unittest: any
+  test: any
