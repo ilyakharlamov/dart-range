@@ -74,12 +74,10 @@ class Range extends Object with IterableMixin<int> {
     return l;
   }
 
-  bool operator ==(Range other) {
-    return (other != null &&
-        start == other.start &&
-        stop == other.stop &&
-        step == other.step);
-  }
+  bool operator ==(other) => other is Range &&
+      start == other.start &&
+      stop == other.stop &&
+      step == other.step;
 
   final int start;
   final int stop;
