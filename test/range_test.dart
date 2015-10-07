@@ -135,6 +135,16 @@ main() {
     }
   });
 
+  test("==", () {
+    var r = range(1, 8, 2);
+    expect(r == null, isFalse);
+    expect(r == 'hi', isFalse);
+    expect(r == range(1, 8, 2), isTrue);
+    expect(r == range(1, 8, 4), isFalse);
+    expect(r == range(2, 8, 2), isFalse);
+    expect(r == range(1, 7, 2), isFalse);
+  });
+
   test("hashCode", () {
     expect(range(1, 2, 3).hashCode, range(1, 2, 3).hashCode);
     expect(range(1, 2).hashCode, range(1, 2).hashCode);
