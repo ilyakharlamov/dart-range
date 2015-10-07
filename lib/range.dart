@@ -40,39 +40,13 @@ class Range extends IterableBase<int> {
   String toString() =>
       step == 1 ? "Range($start, $stop)" : "Range($start, $stop, $step)";
 
-  bool every(bool f(int e)) {
-    for (int e in this) {
-      if (f(e) == false) {
-        return false;
-      }
-    }
-    return true;
-  }
+  /// *Deprecated*: use [any] instead.
+  @deprecated
+  bool some(bool f(int e)) => any(f);
 
-  bool some(bool f(int e)) {
-    for (int e in this) {
-      if (f(e)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  void forEach(void f(int e)) {
-    for (int e in this) {
-      f(e);
-    }
-  }
-
-  List<int> filter(bool f(int e)) {
-    var l = new List<int>();
-    for (int e in this) {
-      if (f(e)) {
-        l.add(e);
-      }
-    }
-    return l;
-  }
+  /// *Deprecated*: use [where] instead.
+  @deprecated
+  List<int> filter(bool f(int e)) => where(f).toList();
 
   bool operator ==(other) => other is Range &&
       start == other.start &&
