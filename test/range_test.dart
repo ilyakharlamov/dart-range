@@ -1,4 +1,4 @@
-import '../lib/range.dart';
+import 'package:range/range.dart';
 import 'package:test/test.dart';
 
 main() {
